@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    Vector3 mousepos = Input.mousePosition;
+    Vector3 oldMousePosition;
 
     
 
@@ -12,9 +12,20 @@ public class Camera : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            
-            //getintothemouseposition con input
+
+            FuncionMoverCamara();
 
         }
+        oldMousePosition = Input.mousePosition;
     }
+
+    void FuncionMoverCamara()
+    {
+
+        Vector3 deltapos = oldMousePosition - Input.mousePosition;
+        Camera.main.transform.position += new Vector3(deltapos.x, 0.0f, deltapos.y);
+
+    }
+    
 }
+
